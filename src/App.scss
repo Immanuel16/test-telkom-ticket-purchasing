@@ -12,3 +12,8 @@
     display: none;
   }
 }
+
+button:disabled{
+  background: #cdcdcd;
+  cursor: not-allowed;
+}

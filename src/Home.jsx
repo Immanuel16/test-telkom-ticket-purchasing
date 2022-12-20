@@ -48,7 +48,7 @@ function Home() {
                   <td className="border py-2 text-center">{item.delivery}</td>
                   <td className="border py-2 text-center">{item.price}</td>
                   <td className="border py-2 text-center">{item.quantity}</td>
-                  <td className="border py-2 text-center"><button className='text-blue-400 font-semibold'>Checkout</button></td>
+                  <td className="border py-2 text-center"><button className='text-blue-400 font-semibold' onClick={() => navigate(`checkout/${item.id}`)}>Checkout</button></td>
                 </tr>
               ))
             }
