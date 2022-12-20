@@ -1,0 +1,1 @@
+export const convertResponseApi = (response) => response.data;

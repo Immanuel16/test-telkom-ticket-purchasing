@@ -1,0 +1,14 @@
+.input-table {
+  outline: none !important;
+  border: none !important;
+  &:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+.area-table {
+  &::-webkit-scrollbar{
+    display: none;
+  }
+}
