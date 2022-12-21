@@ -111,56 +111,61 @@ export default function CheckoutPage() {
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-xl font-semibold">Total</h3>
             <div className="flex space-x-1 items-center">
-              <h3 className="text-xl font-semibold">${infoOrder.price}</h3>
-              <FontAwesomeIcon icon={show ? faChevronUp : faChevronDown} />
+              <h3 className="text-xl font-semibold">${formatNumber((infoOrder.price * infoOrder.quantity) + (infoOrder.serviceFee * infoOrder.quantity) + infoOrder.orderingFee)}</h3>
+              <button onClick={() => setShow(!show)}>
+                <FontAwesomeIcon icon={show ? faChevronUp : faChevronDown} />
+              </button>
             </div>
           </div>
-          <div className="space-y-2 mb-3">
-            <p className="text-lg font-semibold">Tickets</p>
-            <div className="flex justify-between items-center text-sm">
-              <p>Resale Tickets: ${infoOrder.price} x {infoOrder.quantity}</p>
-              <p>${infoOrder.price * infoOrder.quantity}</p>
-            </div>
-          </div>
-          <div className="space-y-1 mb-3">
-            <p className="text-lg font-semibold">Notes From Seller</p>
-            <p className="text-sm">{infoOrder.sellerNotes}</p>
-          </div>
-
-          <div className="space-y-1 mb-3">
-            <p className="text-lg font-semibold">Fees</p>
+          {show && (
             <div>
-              <div className="flex justify-between items-center text-sm">
-                <p>Service Fee: ${infoOrder.serviceFee} x {infoOrder.quantity}</p>
-                <p>{formatNumber(infoOrder.serviceFee * infoOrder.quantity)}</p>
+              <div className="space-y-2 mb-3">
+                <p className="text-lg font-semibold">Tickets</p>
+                <div className="flex justify-between items-center text-sm">
+                  <p>Resale Tickets: ${infoOrder.price} x {infoOrder.quantity}</p>
+                  <p>${infoOrder.price * infoOrder.quantity}</p>
+                </div>
               </div>
-              <div className="flex justify-between items-center text-sm">
-                <p>Order Process Fee: ${infoOrder.orderingFee}</p>
-                <p>${formatNumber(infoOrder.orderingFee)}</p>
+              <div className="space-y-1 mb-3">
+                <p className="text-lg font-semibold">Notes From Seller</p>
+                <p className="text-sm">{infoOrder.sellerNotes}</p>
               </div>
-            </div>
-          </div>
 
-          <div className="space-y-1 mb-3">
-            <p className="text-lg font-semibold">Delivery</p>
-            <div>
-              <div className="flex justify-between items-center text-sm">
-                <p>{infoOrder.delivery}</p>
-                <p>{infoOrder.deliveryFee}</p>
+              <div className="space-y-1 mb-3">
+                <p className="text-lg font-semibold">Fees</p>
+                <div>
+                  <div className="flex justify-between items-center text-sm">
+                    <p>Service Fee: ${infoOrder.serviceFee} x {infoOrder.quantity}</p>
+                    <p>{formatNumber(infoOrder.serviceFee * infoOrder.quantity)}</p>
+                  </div>
+                  <div className="flex justify-between items-center text-sm">
+                    <p>Order Process Fee: ${infoOrder.orderingFee}</p>
+                    <p>${formatNumber(infoOrder.orderingFee)}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="flex">
-            <button className="text-blue-400 text-lg font-semibold">Cancel Order</button>
-          </div>
-          <p className="text-sm font-semibold my-3">*All Sales Final - No Refunds</p>
-          <div className="flex space-x-1 mb-3 items-center">
-            <input type="checkbox" name="" value={isAgree} onChange={(e) => setIsAgree(!isAgree)} id="" />
-            <p className="text-sm font-semibold">I have read and agree to the current <span className='text-blue-400'>Terms of Use</span></p>
-          </div>
-          <button className="bg-green-500 py-2 text-white font-semibold mb-3" disabled={!isAgree}>Place Order</button>
-          <p className="text-xs font-semibold">*Exceptions may apply. see our Terms of Use.</p>
 
+              <div className="space-y-1 mb-3">
+                <p className="text-lg font-semibold">Delivery</p>
+                <div>
+                  <div className="flex justify-between items-center text-sm">
+                    <p>{infoOrder.delivery}</p>
+                    <p>{infoOrder.deliveryFee}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex">
+                <button className="text-blue-400 text-lg font-semibold">Cancel Order</button>
+              </div>
+              <p className="text-sm font-semibold my-3">*All Sales Final - No Refunds</p>
+              <div className="flex space-x-1 mb-3 items-center">
+                <input type="checkbox" name="" value={isAgree} onChange={(e) => setIsAgree(!isAgree)} id="" />
+                <p className="text-sm font-semibold">I have read and agree to the current <span className='text-blue-400'>Terms of Use</span></p>
+              </div>
+              <button className="bg-green-500 py-2 text-white font-semibold mb-3" disabled={!isAgree}>Place Order</button>
+              <p className="text-xs font-semibold">*Exceptions may apply. see our Terms of Use.</p>
+            </div>
+          )}
         </div>
       </div>
     </div>
